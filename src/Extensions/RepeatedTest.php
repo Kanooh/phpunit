@@ -93,6 +93,9 @@ class PHPUnit_Extensions_RepeatedTest extends PHPUnit_Extensions_TestDecorator
 
         //@codingStandardsIgnoreStart
         for ($i = 1; $i <= $this->timesRepeat && !$result->shouldStop(); $i++) {
+            // Make the repeat count widely available.
+            $_ENV['PHPUnit_RepeatedTest_RepeatCount'] = $i;
+
             if ($this->onlyRepeatFailed &&
                 $i > 1 &&
                 $this->test instanceof PHPUnit_Framework_TestCase &&
